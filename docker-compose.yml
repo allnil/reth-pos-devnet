@@ -28,8 +28,10 @@ services:
   # Sets up the genesis configuration for the go-ethereum client from a JSON file.
   reth-genesis:
     image: "ghcr.io/paradigmxyz/reth"
-    command: 
-      - init 
+    environment:
+      - CONFIG=/execution/bq-config.json
+    command:
+      - init
       - --chain=/execution/genesis.json
     volumes:
       - ./execution:/execution
